@@ -40,48 +40,49 @@ Simple and easy step for this Jenkins declarative pipline project..
 
 *Step7: Change some network settings of Ec2-Instance from Security Group
   
-  1: allow 8080 from MyIp.
-  2: allow 8000 from anywhere
-  3: allow ssh from anywhere or myip. both works fine
+    1: allow 8080 from MyIp.
+    2: allow 8000 from anywhere
+    3: allow ssh from anywhere or myip. both works fine
 
 *Step8: Browse Jenkins server.
   
-   copy your ec2-instance Public-ip:8000 and paste it in the browser
-   unlock jenkins password using sudo cat /var/lib/jenkins/secrets/initialAdminPassword
-   make some registration settings alongs with some suggestive pluggins installation process
-   Create a new pipline project from jenkins dashboard
+    copy your ec2-instance Public-ip:8000 and paste it in the browser
+    unlock jenkins password using sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+    make some registration settings alongs with some suggestive pluggins installation process
+    Create a new pipline project from jenkins dashboard
 
 *Step9: Configure project and write pipline script given below
  
-  pipeline {
-    agent any
-
-    stages {
+    pipeline {
+      agent any
+    
+      stages {
           stage('Fetch Source Code') {
-            steps {
+             steps {
                 git url: "https://github.com/U2airKhan/Todo-app-ci-to-container.git", branch: "main"
-            }
-        }
-        stage('Build Image') {
+             }
+          }
+          stage('Build Image') {
             steps {
                sh " docker build -t todo-ci-app ."
             }
-        }
-        stage('Launch Application Container') {
+          }
+          stage('Launch Application Container') {
             steps {
                 sh "docker run -d --name todo-app -p 8000:8000 todo-ci-app"
             }
-        }
+          }
+      }
     }
-  }
 
 *Step10: Save and build pipline.
 
 *Step11: If pipline successfully completed then SSH to your instance
-   check your container is up and running by command " docker ps ".
-   copy your public-ip along with port that is used in mapping container app which is 8000 in this case you can check it in above last stage.
-   paste public-ip:8000 to the browser and enjoy todo-app.
+ 
+    check your container is up and running by command " docker ps ".
+    copy your public-ip along with port that is used in mapping container app which is 8000 in this case you can check it in above last stage.
+    paste public-ip:8000 to the browser and enjoy todo-app.
 
 
-    ******************** best of luck for your project and keep learning **************************
+******************** best of luck for your project and keep learning **************************
 
