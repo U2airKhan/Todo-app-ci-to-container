@@ -55,7 +55,6 @@ Simple and easy step for this Jenkins declarative pipline project..
  
     pipeline {
       agent any
-    
       stages {
           stage('Fetch Source Code') {
              steps {
