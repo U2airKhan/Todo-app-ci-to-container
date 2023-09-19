@@ -5,9 +5,11 @@ Simple and easy step for this Jenkins declarative pipline project..
 *Step1: You have to launch an simple Ec2-instance with ubuntu AMI.
 
 *Step2: SHH to that Ec2-Instance using keypair that you created while making instance.
-    - example: ssh -i "your-key-directory/key-name" "instance-username@instance-public-ip"
+    
+     example: ssh -i "your-key-directory/key-name" "instance-username@instance-public-ip"
 
 *Step3: Install jenkins in that instance
+     
      sudo apt update
      sudo apt install openjdk-11-jre
      java -version
@@ -20,25 +22,30 @@ Simple and easy step for this Jenkins declarative pipline project..
      sudo apt-get install jenkins
 
 *Step4: Start jenkins
+     
      sudo systemctl enable jenkins
      sudo systemctl start jenkins
      sudo systemctl status jenkins
 
 *Step5: Install docker
+     
      sudo apt-get install docker.io
 
 *Step6: Add user user into docker group and provide user permissions to the docker.sock file
+     
      jenkins --version
      docker --version
      sudo usermod -a -G docker $USER
      sudo chmod 666 /var/run/docker.sock
 
 *Step7: Change some network settings of Ec2-Instance from Security Group
+  
   1: allow 8080 from MyIp.
   2: allow 8000 from anywhere
   3: allow ssh from anywhere or myip. both works fine
 
 *Step8: Browse Jenkins server.
+  
    copy your ec2-instance Public-ip:8000 and paste it in the browser
    unlock jenkins password using sudo cat /var/lib/jenkins/secrets/initialAdminPassword
    make some registration settings alongs with some suggestive pluggins installation process
