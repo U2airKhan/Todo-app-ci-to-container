@@ -1,24 +1,21 @@
-name: Test-Github-Action
+name: test github actions run
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+   branches: [ "main" ]
+   paths: 'k8s/**' 
 
   workflow_dispatch:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+   runs-on: ubuntu-latest
 
-    steps:
-     - uses: actions/checkout@v3
-
-     - name: Run a One-line script
-       run: echo Hello, world!
-
-     - name: Run another line script
+   steps:
+     - name: this is simple echo task
+       run:  echo Hello this is simple github actions test run
+     
+     - name: this is another echo task but it will display multiple lines
        run: |
-        echo this is one line,
-        echo test, and deploy your project.
+        echo this is first line of multiple echo statement
+        echo this is second line of multiple echo statement
