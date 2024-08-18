@@ -1,21 +1,15 @@
-name: test github actions run
+name: testing workflow
 
 on:
   push:
-   branches: [ "main" ]
-   paths: 'k8s/**' 
-
+    branches: [ "main" ]
+    paths: "k8s/**"
   workflow_dispatch:
 
 jobs:
   build:
-   runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
-   steps:
-     - name: this is simple echo task
-       run:  echo Hello this is simple github actions test run
-     
-     - name: this is another echo task but it will display multiple lines
-       run: |
-        echo this is first line of multiple echo statement
-        echo this is second line of multiple echo statement
+    steps:
+      - name: this is simple echo task
+        run: echo Hello world
